@@ -3,8 +3,7 @@
 
 @section('content')
 
-@foreach($posts as $post)
-
+    @foreach($posts as $post)
 
     @include('partials.post', ['post' => $post])
   <br>

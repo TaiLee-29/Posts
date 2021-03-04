@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $users = \App\Models\User::factory(20)->create();
-         $categories =\App\Models\Category::factory(50)->create();
-          $tags = \App\Models\Tag::factory(100)->create();
+         $categories =\App\Models\Category::factory(10)->create();
+          $tags = \App\Models\Tag::factory(10)->create();
 
 
         $post =\App\Models\Post::factory(1000)->make(['category_id' => null, 'user_id' => null])->each(function ($post) use ($categories,$tags, $users) {

@@ -4,10 +4,14 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Tag;
+
 class PostByTagController
 {
-    public function __invoke($id){
-        $posts = \App\Models\Post::where('tag_id',$id)->paginate(15);
+    public function __invoke($tag){
+
+        $tag = Tag::find($tag) ;
+        $posts = $tag->posts()->paginate(15);
 
 
         return view('pages.posts', compact('posts'));
