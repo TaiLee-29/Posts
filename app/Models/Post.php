@@ -12,6 +12,7 @@ class Post extends Model
 {
 
     use SoftDeletes, HasFactory;
+    protected $dates = ['deleted_at'];
 
     public function category()
     {

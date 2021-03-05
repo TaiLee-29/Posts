@@ -16,7 +16,7 @@ class PostByAuthorAndCategoryAndTagController
         ->get();
 
 
-    return view('pages.posts', compact('posts'));
+    return view('posts.posts', compact('posts'));
 }
 }
 

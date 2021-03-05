@@ -10,7 +10,7 @@ class PostByCategoryController
         $posts = \App\Models\Post::where('category_id',$id)->paginate(15);
 
 
-        return view('pages.posts', compact('posts'));
+        return view('posts.posts', compact('posts'));
 
     }
 

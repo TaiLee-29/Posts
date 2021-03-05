@@ -14,7 +14,7 @@ class PostByTagController
         $posts = $tag->posts()->paginate(15);
 
 
-        return view('pages.posts', compact('posts'));
+        return view('posts.posts', compact('posts'));
 
     }
 }

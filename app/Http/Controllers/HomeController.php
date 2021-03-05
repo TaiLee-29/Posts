@@ -11,7 +11,7 @@ class HomeController
     public function __invoke(){
       $posts = Post::paginate(15);
 
-      return view('pages.posts', compact('posts'));
+      return view('posts.posts', compact('posts'));
     }
 
 }

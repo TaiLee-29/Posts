@@ -10,7 +10,7 @@ class PostByAuthorController
      $posts = \App\Models\Post::where('user_id',$id)->paginate(15);
 
 
-      return view('pages.posts', compact('posts'));
+      return view('posts.posts', compact('posts'));
     }
 
 }

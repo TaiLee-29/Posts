@@ -13,7 +13,7 @@ class PostByAuthorAndCategoryController
         $posts = Post::where('user_id', $authorid)->where('category_id',$categoryid)->get();
 
 
-        return view('pages.posts', compact('posts'));
+        return view('posts.posts', compact('posts'));
     }
 
 }

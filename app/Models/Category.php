@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Category extends Model
 {
     use SoftDeletes, HasFactory;
-
+    protected $dates = ['deleted_at'];
     public function posts()
     {
         return $this->hasMany(\App\Models\Post::class);
