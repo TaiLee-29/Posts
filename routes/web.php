@@ -29,7 +29,7 @@ Route::post('/tag/{id}/update','\App\Http\Controllers\TagController@editT');
 Route::post('/tag/{id}/delete','\App\Http\Controllers\TagController@destroyT');
 
 //Posts
-Route::get('/', \App\Http\Controllers\HomeController::class)->name('posts');
+Route::get('/', \App\Http\Controllers\HomeController::class)->name('home');
 Route::get('/author/{id}', \App\Http\Controllers\PostByAuthorController::class)->name('post-by-author');
 Route::get('/category/{id}', \App\Http\Controllers\PostByCategoryController::class)->name('post-by-category');
 Route::get('/tag/{tag}', \App\Http\Controllers\PostByTagController::class)->name('post-by-tag');
@@ -41,3 +41,19 @@ Route::post('/post/create','\App\Http\Controllers\PostController@storeP');
 Route::get('/post/{id}/update','\App\Http\Controllers\PostController@updateP');
 Route::post('/post/{id}/update','\App\Http\Controllers\PostController@editP');
 Route::post('/post/{id}/delete','\App\Http\Controllers\PostController@destroyP');
+
+
+
+Route::middleware('guest')->group(function (){
+    Route::get('/auth/login',[\App\Http\Controllers\AuthController::class, 'login'])->name('auth-login');
+    Route::post('/auth/login',[\App\Http\Controllers\AuthController::class, 'handleLogin'])->name('auth-handle-login');
+
+
+});
+
+Route::middleware('auth')->group(function(){
+    Route::get('/auth/logout',[\App\Http\Controllers\AuthController::class, 'logout'])->name('auth-logout');
+
+});
+
+

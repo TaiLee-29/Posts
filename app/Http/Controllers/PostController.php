@@ -66,7 +66,7 @@ class PostController
         $post->save();
         $post->tags()->sync( $data['tags']);
 
-        return redirect()->route('posts');
+        return redirect()->route('home');
 
     }
     public function destroyP($id)
@@ -74,7 +74,7 @@ class PostController
         $data = request()->all();
         $post =  \App\Models\Post::find($id);
         $post->delete();
-        return redirect()->route('posts');
+        return redirect()->route('home');
     }
     public function storeP()
     {
@@ -110,7 +110,7 @@ class PostController
             'text' => "Post \" {$data['title']} \" saved"
         ];
 
-        return redirect()->route('posts');
+        return redirect()->route('home');
     }
 
 
