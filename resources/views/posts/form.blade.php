@@ -59,18 +59,6 @@
             </div>
 
 
-        <div class="mb-3">
-            <label for="user_id"> Users </label>
-            <select id="user_id" name="user_id" class="form-select" >
-                @if(isset($_SESSION['data']['user_id']))
-                    {{$select_id=$_SESSION['data']['user_id']}}
-                @else {{$select_id=$post->user_id}}
-                @endif
-                @foreach($users as $user)
-                    <option @if ($user->id==$select_id): selected @endif value="{{$user->id}}">{{$user->name}}</option>
-                @endforeach
-            </select>
-        </div>
             @if(isset($_SESSION['errors']['tags']))
                 @foreach($_SESSION['errors']['tags'] as $error)
                     <div class="alert alert-warning" role="alert">

@@ -1,6 +1,14 @@
 @extends('layout')
 
 @section('content')
+    @if($errors->has('email'))
+        @foreach($errors->get('email') as $error)
+          <div class="alert alert-dark" role="alert">
+              <p> {{$error}}</p>
+          </div>
+
+        @endforeach
+        @endif
 
     <form action="" method="post">
         @csrf

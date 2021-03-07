@@ -40,7 +40,10 @@ class AuthController
 
     public function logout()
     {
+       Auth::logout();
 
+
+        return redirect()->route('home');
     }
 
 }

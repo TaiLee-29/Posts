@@ -37,8 +37,7 @@
 
 <main class="container">
     <div class="bg-light p-5 rounded mt-3">
-        <h1>8///6///4///2///ручка - ...</h1>
-        <p class="lead">HomeWork by Daniil Danilyuk</p>
+        <h1>Posts by all authors</h1>
         <a class="btn btn-lg btn-primary" href="/" role="button">List</a>
     </div>
     <div>@yield('paginator')</div>
@@ -47,7 +46,8 @@
 </main>
 <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/auth/login">Login</a>
+        @guest()<a class="navbar-brand" href="/auth/login">Login</a>@endguest
+            @auth()<a class="navbar-brand" href="/auth/login">Login</a>@endauth
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

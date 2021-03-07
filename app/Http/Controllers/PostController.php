@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class PostController
 
@@ -21,11 +22,10 @@ class PostController
         $posts = \App\Models\Post::all();
         $post = new \App\Models\Post();
         $tags = \App\Models\Tag::all();
-        $users = \App\Models\User::all();
         $categories = \App\Models\Category::all();
 
 
-        return view('posts.form',compact('posts','post','tags','categories','users'));
+        return view('posts.form',compact('posts','post','tags','categories'));
 
 
     }
@@ -34,9 +34,8 @@ class PostController
         //$data = request()->all();
         $post= \App\Models\Post::find($id);
         $tags = \App\Models\Tag::all();
-        $users = \App\Models\User::all();
         $categories = \App\Models\Category::all();
-        return view('posts.form',compact('post','tags','categories','users'));
+        return view('posts.form',compact('post','tags','categories'));
 
     }
     public function editP($id)
@@ -46,7 +45,6 @@ class PostController
             'title' => ['required', 'min:5'],
             'body' => ['required', 'min:10'],
             'category_id' => ['required' ],
-            'user_id' => ['required' ],
             'tags' => ['required' ],
         ]);
 
@@ -62,7 +60,7 @@ class PostController
         $post->title=$data['title'];
         $post->body = $data['body'];
         $post->category_id = $data['category_id'];
-        $post->user_id = $data['user_id'];
+        $post->user_id = $data['user_id'] = Auth::id();
         $post->save();
         $post->tags()->sync( $data['tags']);
 
@@ -83,7 +81,6 @@ class PostController
             'title' => ['required', 'min:5'],
             'body' => ['required', 'min:10'],
             'category_id' => ['required' ],
-            'user_id' => ['required' ],
             'tags' => ['required' ],
         ]);
 
@@ -100,7 +97,7 @@ class PostController
         $post->title = $data['title'];
         $post->body = $data['body'];
         $post->category_id = $data['category_id'];
-        $post->user_id = $data['user_id'];
+        $post->user_id = $data['user_id'] = Auth::id();
 
         $post->save();
         $post->tags()->attach( $data['tags']);
