@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class PostController
 
 {    public function listP(){
-    $pages = \App\Models\Post::paginate(3);
+    $pages = \App\Models\Post::paginate(5);
     $link_main="";
     return view('post/table', compact('pages','link_main'));
 }

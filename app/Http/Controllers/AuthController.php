@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController
 {
@@ -26,6 +27,9 @@ class AuthController
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($data)) {
+            $user=Auth::user();
+            $user->password = Hash::make($data['password']);
+            $user->save();
             return redirect()->route('home');
         }
         return back()->withErrors([

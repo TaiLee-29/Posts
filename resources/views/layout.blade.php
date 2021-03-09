@@ -47,7 +47,7 @@
 <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
         @guest()<a class="navbar-brand" href="/auth/login">Login</a>@endguest
-            @auth()<a class="navbar-brand" href="/auth/login">Login</a>@endauth
+            @auth()<a class="navbar-brand" href="/auth/logout">Logout</a>@endauth
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
